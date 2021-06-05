@@ -97,3 +97,12 @@ def upload(request):
     return render(request, 'WebApp\\upload.html', {
         'form': uploadImageForms
     })
+
+@login_required_check
+def logout(request):
+    if request.method == 'POST':
+        request.session['username'] = None
+        request.session['loged_in'] = False
+        return redirect(login)
+    else:
+        return render(request, "WebApp\\logout.html")
