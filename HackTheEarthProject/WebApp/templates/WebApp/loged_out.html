@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'WebApp//styles.css' %}">
+    
+    <title>Hack The Earth</title>
+</head>
+
+
+<body>
+    <div class="topnav">
+        <a class="leftside" href="{% url 'index' %}">Home</a>
+        <a class="leftside" href="{% url 'upload' %}">Post</a>
+        <a class="leftside" href="{% url 'friends' %}">Friends</a>
+        <a class="leftside" href="{% url 'index' %}">Help</a>
+    
+        <a class="rightside" href="{% url 'signup' %}">Sign Up</a>
+        <a class="rightside" href="{% url 'login' %}">Login</a>
+    </div>
+    {% block main %}
+
+    {% endblock %}
+</body>
+
+</html>

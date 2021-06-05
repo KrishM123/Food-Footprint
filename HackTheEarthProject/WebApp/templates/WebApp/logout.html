@@ -1,12 +1,11 @@
-{% extends "WebApp/loged_out.html" %}
+{% extends "WebApp/template.html" %}
 
 {% block main %}
 
-<h1>Signup</h1>
+<h1>Logout</h1>
 <form method='POST' enctype="multipart/form-data">
     {% csrf_token %}
-    {{ signUpForm }}
-    <input type="submit">
+    <input type="submit" label="logout">
 </form>
 
 {% endblock %}

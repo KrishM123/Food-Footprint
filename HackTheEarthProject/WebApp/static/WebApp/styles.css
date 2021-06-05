@@ -1,0 +1,22 @@
+.topnav {
+  overflow: hidden;
+}
+
+.topnav a{
+  font-family: Verdana;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 10px 12px;
+  padding: 8px 8px;
+  border-radius: 10px;
+}
+
+.topnav a.leftside {
+  float: left;
+}
+
+.topnav a.rightside {
+  float: right;
+}

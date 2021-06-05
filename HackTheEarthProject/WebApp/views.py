@@ -106,3 +106,7 @@ def logout(request):
         return redirect(login)
     else:
         return render(request, "WebApp\\logout.html")
+
+@login_required_check
+def friends(request):
+    return render(request, "WebApp\\friends.html")
