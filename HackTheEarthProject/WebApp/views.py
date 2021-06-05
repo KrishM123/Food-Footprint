@@ -42,3 +42,17 @@ def login(request):
         'loginForm': loginForms(),
         'errorMessage': errorMessage
     })
+
+@login_required_check
+def upload(request):
+    if request.method == 'POST':
+        uploaded_document = request.FILES['document']
+        resource = Pictures(
+            uploaded_by = Users.objects.get(username=request.session['username']),
+            picture = uploaded_document
+        )
+        resource.save()
+        
+    return render(request, 'WebApp\\upload.html', {
+        'form': uploadImageForms
+    })

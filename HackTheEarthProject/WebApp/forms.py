@@ -11,3 +11,6 @@ class signUpForms(forms.Form):
 class loginForms(forms.Form):
     username = forms.CharField(required=True, widget=forms.TextInput({'placeholder': 'Username'}))
     password = forms.CharField(required=True, widget=forms.TextInput({'placeholder': 'Password'}))
+
+class uploadImageForms(forms.Forn):
+    image = forms.ImageField()
