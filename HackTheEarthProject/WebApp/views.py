@@ -4,6 +4,7 @@ from WebApp.models import *
 
 # Create your views here.
 
+
 def login_required_check(view):
     def updated_view(request):
         try:
@@ -15,10 +16,24 @@ def login_required_check(view):
             return redirect(login)
     return updated_view
 
+def not_loged_in_check(view):
+    def updated_view(request):
+        try:
+            if request.session["loged_in"] == False:
+                return view(request)
+            else:
+                return redirect(index)
+        except:
+            return view(request)
+    
+    return updated_view
 
+
+@login_required_check
 def index(request):
 	return render(request, "WebApp\\index.html")
 
+@not_loged_in_check
 def login(request):
     errorMessage = ''
     if request.method == 'POST':
