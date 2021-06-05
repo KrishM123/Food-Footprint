@@ -28,6 +28,32 @@ def not_loged_in_check(view):
     
     return updated_view
 
+@not_loged_in_check
+def signup(request):
+    if request.method == 'POST':
+        user_input = signUpForms(request.POST)
+        if user_input.is_valid():
+            new_name = user_input.cleaned_data["name"]
+            new_username = user_input.cleaned_data["username"]
+            new_password = user_input.cleaned_data["password"]
+            new_email = user_input.cleaned_data["email"]
+
+            request.session['username'] = new_username
+            request.session['loged_in'] = True
+
+            new_user = Users(
+                name = new_name,
+                username = new_username,
+                password = new_password,
+                email = new_email
+            )
+            new_user.save()
+            
+            redirect(index)
+
+    return render(request, "WebApp\\signup.html", {
+        'signUpForm': signUpForms()
+    })
 
 @login_required_check
 def index(request):
