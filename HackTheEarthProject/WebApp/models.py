@@ -14,6 +14,7 @@ class Users(models.Model):
         return f"{self.username}: {self.email}"
 
 class Pictures(models.Model):
+    uploaded_at = models.DateTimeField(auto_now=True)
     uploaded_by = models.ForeignKey(Users, on_delete=models.CASCADE)
     picture = models.ImageField(upload_to=os.path.join(os.getcwd(), 'WebApp', 'Images'))
 
@@ -24,3 +25,13 @@ class Friends(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     creator = models.ForeignKey(Users, related_name="friendship_creator_set", on_delete=models.CASCADE)
     friend = models.ForeignKey(Users, related_name="friend_set", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.creator} is friends with {self.friend}"
+
+class Scores(models.Model):
+    image = models.ForeignKey(Pictures, on_delete=models.CASCADE)
+    score = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.image.path} got {self.score}"

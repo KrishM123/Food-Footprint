@@ -4,6 +4,18 @@ from WebApp.models import *
 
 # Create your views here.
 
+def login_required_check(view):
+    def updated_view(request):
+        try:
+            if request.session["loged_in"] == True:
+                return view(request)
+            else:
+                return redirect(login)
+        except KeyError:
+            return redirect(login)
+    return updated_view
+
+
 def index(request):
 	return render(request, "WebApp\\index.html")
 
