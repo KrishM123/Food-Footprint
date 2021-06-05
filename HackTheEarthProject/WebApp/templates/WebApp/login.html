@@ -1,0 +1,11 @@
+{% block form %}
+
+<h1>Login</h1>
+<form method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ loginForm }}
+    <input type="submit">
+</form>
+<p>{{ errorMessage }}</p>
+
+{% endblock %}
