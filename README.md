@@ -6,3 +6,5 @@ Food Footprint is a social media website where users can login, follow friends, 
 Each post will be fed through a neural net which will assign a carbon footprint value to the food which will be associated to the post.
 
 To run application, run "python manage.py runserver" in HackTheEarth2021\
+
+The application is currently incomplete.
